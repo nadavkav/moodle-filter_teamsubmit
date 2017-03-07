@@ -1,0 +1,1 @@
+{"key":"team_submit","instructions":"מטלה בצוות אינה עובדת עם מנגנון הגשה בקבוצות ולכן נא לא להפעיל אותו במטלה.\n\nלאתחול המנגנון, יש לקבוע את מספר התלמידים המירבי בצוות","requirecss":"","requirejs":"","shim":"","defaults":"limit=5","amd":"1","body":"[[teamsubmit,@@LIMIT@@]]","bodyend":"","script":"","style":"","dataset":"","datasetvars":"","alternate":"","alternateend":""}
