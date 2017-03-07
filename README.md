@@ -38,7 +38,7 @@ Create a new assignment or go into an existing one. At the intro setting, use th
 In which 5 is the limit of team members, including the leader which submit the assignment in everyone's 
 name and also get graded, which is copied to all other members. 
 
-If you are using the filter Geberico spacial button to initiate and innsert the this filter's shortcode,
+If you are using the [filter Generico](https://moodle.org/plugins/filter_generico) and its [spacial button](https://moodle.org/plugins/atto_generico) to initiate and innsert the this filter's shortcode,
 you should get the Generico preset from the main folder of this repository (filter/teamsubmit/generico-preset-team_submit.txt), and install it into your system too.
 
 Here is the Generico syntax:
@@ -62,9 +62,11 @@ No special notes
 Further information
 -------------------
 
-filter_teamsubmit is found in the Davidson Moodle plugins repository: https://github.org/nadavkav/moodle-filter_teamsubmit
+filter_teamsubmit is found in the Davidson Moodle plugins repository: 
+https://github.com/nadavkav/moodle-filter_teamsubmit
 
-Report a bug or suggest an improvement: https://github.org/nadavkav/moodle-filter_teamsubmit/issues
+Report a bug or suggest an improvement: 
+https://github.com/nadavkav/moodle-filter_teamsubmit/issues
 
 
 Moodle release support
