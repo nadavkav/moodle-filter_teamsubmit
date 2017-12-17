@@ -18,7 +18,8 @@
  * Filter "teamsubmit"
  *
  * @package    filter_teamsubmit
- * @copyright  2016 Nadav Kavalerchik (Davidson institute of science)
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,5 +30,5 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_heading('filter_teamsubmit/heading', get_string('configheading', 'filter_teamsubmit'), ''));
 
     $settings->add(new admin_setting_configtext('filter_teamsubmit/teammemberslimit', get_string('teammemberslimit', 'filter_teamsubmit'),
-                        get_string('teammemberslimit_desc', 'filter_teamsubmit'), 1));
+        get_string('teammemberslimit_desc', 'filter_teamsubmit'), 1));
 }

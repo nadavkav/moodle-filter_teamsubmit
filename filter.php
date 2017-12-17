@@ -18,13 +18,15 @@
  * Filter "teamsubmit"
  *
  * @package    filter_teamsubmit
- * @copyright  2016 Nadav Kavalerchik (Davidson institute of science)
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-class filter_teamsubmit extends moodle_text_filter {
+class filter_teamsubmit extends moodle_text_filter
+{
 
     /*
      * This main filter function replaces the [[teamsubmit]] syntax with team submit HTML UI code.
@@ -32,10 +34,11 @@ class filter_teamsubmit extends moodle_text_filter {
      * @param string $text The text to filter.
      * @param array $options The filter options.
      */
-    function filter ($text, array $options = array() ) {
+    public function filter($text, array $options = array())
+    {
         global $CFG, $DB, $USER;
 
-        include_once($CFG->dirroot.'/filter/teamsubmit/locallib.php');
+        include_once($CFG->dirroot . '/filter/teamsubmit/locallib.php');
 
         // Get config
         $filter_teamsubmit = get_config('filter_teamsubmit');
@@ -53,8 +56,8 @@ class filter_teamsubmit extends moodle_text_filter {
         $teamsubmittext = '';
 
         // Do if placeholder is found
-        if ( (!empty($matches) && count($matches[0]) > 0)
-            OR (!empty($matches_generico) && count($matches_generico[0]) > 0) ) {
+        if ((!empty($matches) && count($matches[0]) > 0)
+            OR (!empty($matches_generico) && count($matches_generico[0]) > 0)) {
 
             //$teamsubmittext = \html_writer::div('team submit instructions', 'teamsubmit');
 
@@ -80,12 +83,12 @@ class filter_teamsubmit extends moodle_text_filter {
                 // todo: fix me
                 //$blockinstanceid = 1;//$this->instance->id;
                 $params = array('cmid' => $module[1]->id, 'instanceid' => $blockinstanceid);
-                $showteammembersurl = new \moodle_url($CFG->wwwroot.'/filter/teamsubmit/show_teams.php', $params);
+                $showteammembersurl = new \moodle_url($CFG->wwwroot . '/filter/teamsubmit/show_teams.php', $params);
                 //$this->content->text .= \html_writer::empty_tag('hr');
                 $teamsubmittext = \html_writer::link($showteammembersurl, $showteammembers);
 
                 $teamsubmittext .= \html_writer::div(get_string('maxteammemebers', 'filter_teamsubmit',
-                                    $filter_teamsubmit->teammemberslimit));
+                    $filter_teamsubmit->teammemberslimit));
                 /*
                 $inputlimitmembers = "<LABEL>".get_string('teammemberslimit', 'filter_teamsubmit').
                     " <INPUT name='teammemberslimit' value='{$filter_teamsubmit->teammemberslimit}' SIZE='3'></LABEL>";
@@ -123,7 +126,7 @@ class filter_teamsubmit extends moodle_text_filter {
             $teamiampartof = $DB->get_record_sql($sql, array($module[1]->id, $USER->id));
             if ($teamiampartof) {
                 $teamleader = \core_user::get_user($teamiampartof->userid);
-                $html_teamiampartof = \html_writer::div(get_string('teamiampartof', 'filter_teamsubmit', fullname($teamleader) ));
+                $html_teamiampartof = \html_writer::div(get_string('teamiampartof', 'filter_teamsubmit', fullname($teamleader)));
                 $html_teamiampartof .= \html_writer::nonempty_tag('style', '.path-mod-assign .submissionaction {display:none;}');
                 $teamsubmittext = $html_teamiampartof;
                 //return preg_replace($pattern, $teamsubmittext, $text);
@@ -169,7 +172,7 @@ class filter_teamsubmit extends moodle_text_filter {
                 if ($USER->id == $user->id) continue;
 
                 // Remove user from available users if already a member of other team.
-                if (in_array($user->id, $alreadymemebersonotherteams )) continue;
+                if (in_array($user->id, $alreadymemebersonotherteams)) continue;
 
                 // Pre select team members.
                 if (in_array($user->id, $myteammembers)) {
@@ -184,9 +187,9 @@ class filter_teamsubmit extends moodle_text_filter {
             $hidden = "<INPUT TYPE='hidden' name='userid' value='$USER->id'>";
             $hidden .= "<INPUT TYPE='hidden' name='contextid' value='$contextid'>";
             $hidden .= "<INPUT TYPE='hidden' name='memberlimit' value='{$filter_teamsubmit->teammemberslimit}'>";
-            $submit = '<BR><INPUT TYPE="submit" name="submit" value="'.get_string('update').'">';
+            $submit = '<BR><INPUT TYPE="submit" name="submit" value="' . get_string('update') . '">';
 
-            $html_teammemberediting = $html_myteammemebers.
+            $html_teammemberediting = $html_myteammemebers .
                 "<FORM action='$CFG->wwwroot/filter/teamsubmit/manage_members.php'>$userlist $hidden $submit</FORM>";
         }
 

@@ -17,8 +17,9 @@
 /**
  * team_submission block - manage submission team members.
  *
- * @package    block_team_submit
- * @copyright  @copyright Nadav Kavalerchik <nadavkav@gmail.com>
+ * @package    filter_teamsubmit
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,17 +30,17 @@ global $DB, $CFG;
 
 $contextid = required_param('contextid', PARAM_INT);
 $userid = required_param('userid', PARAM_INT);
-$memberlimit= required_param('memberlimit', PARAM_INT);
+$memberlimit = required_param('memberlimit', PARAM_INT);
 $memberids = optional_param_array('memberids', array(), PARAM_INT);
 
 require_login();
 
 $module = filter_get_course_module_from_contextid($contextid);
 
-$listaborted = get_string('listaborted','filter_teamsubmit');
-if (count($memberids) > $memberlimit-1) {
+$listaborted = get_string('listaborted', 'filter_teamsubmit');
+if (count($memberids) > $memberlimit - 1) {
     echo "Member list updated aborted";
-    redirect($CFG->wwwroot.'/mod/assign/view.php?id='.$module[1]->id, $listaborted, 3);
+    redirect($CFG->wwwroot . '/mod/assign/view.php?id=' . $module[1]->id, $listaborted, 3);
 //    redirect($CFG->wwwroot.'/mod/assign/view.php?id='.$module[1]->id, 'Your list of assignment team members was aborted, exceeded team limit', 3);
 }
 
@@ -61,8 +62,8 @@ if ($module[1]->modname == 'assign') {
 }
 
 echo "Member list updated";
-$listupdated = get_string('listupdated','filter_teamsubmit');
-redirect($CFG->wwwroot.'/mod/assign/view.php?id='.$module[1]->id, $listupdated, 3);
+$listupdated = get_string('listupdated', 'filter_teamsubmit');
+redirect($CFG->wwwroot . '/mod/assign/view.php?id=' . $module[1]->id, $listupdated, 3);
 //redirect($CFG->wwwroot.'/mod/assign/view.php?id='.$module[1]->id, 'Your list of assignment team members was updated successfully', 3);
 die;
 

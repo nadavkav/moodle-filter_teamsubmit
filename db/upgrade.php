@@ -17,9 +17,9 @@
 /**
  * teamsubmit filter plugin upgrade code
  *
- * @package    filter
- * @subpackage teamsubmit
- * @copyright  2016 Nadav Kavalerchik (Davidson institute of science)
+ * @package    filter_teamsubmit
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

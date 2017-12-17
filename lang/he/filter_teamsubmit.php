@@ -17,10 +17,10 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     filter_teamsubmit
- * @category    string
- * @copyright   2016
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    filter_teamsubmit
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();

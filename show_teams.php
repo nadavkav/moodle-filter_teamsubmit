@@ -17,8 +17,9 @@
 /**
  * team_submission filter - manage submission team members.
  *
- * @package    filter_team_submit
- * @copyright  @copyright Nadav Kavalerchik <nadavkav@gmail.com>
+ * @package    filter_teamsubmit
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -61,8 +62,6 @@ if ($module[1]->modname == 'assign') {
     $teams = $DB->get_records('filter_team_submit', array('cmid' => $cmid));
 
 
-
-
     foreach ($teams as $team) {
         if ($team->teammembers != '') {
             $mainuser = core_user::get_user($team->userid);
@@ -74,7 +73,7 @@ if ($module[1]->modname == 'assign') {
             $leadergrade = (!empty($teamleadergrade->grade)) ? $teamleadergrade->grade : '';
             $leadergrade = floor($leadergrade);
             if ($leadergrade) {
-                $html .= \html_writer::tag('div', get_string('teamleadergrade', 'filter_teamsubmit', $leadergrade ));
+                $html .= \html_writer::tag('div', get_string('teamleadergrade', 'filter_teamsubmit', $leadergrade));
             }
 
             $teammembers = explode(',', $team->teammembers);

@@ -17,10 +17,10 @@
 /**
  * Plugin event observers are registered here.
  *
- * @package     filter_team_submit
- * @category    event
- * @copyright   2016
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    filter_teamsubmit
+ * @copyright  2016 onwards - Davidson institute (Weizmann institute)
+ * @author     Nadav Kavalerchik <nadav.kavalerchik@weizmann.ac.il>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -33,6 +33,23 @@ $observers = array(
     array(
         'eventname' => '\mod_assign\event\submission_graded',
         'callback' => '\filter_teamsubmit\observer::update_team_memebers_grades',
-        'schedule'        => 'instant',
+        'schedule' => 'instant',
+    ),
+    array(
+        //'eventname' => '\mod_assign\event\submission_updated',
+        'eventname' => '\assignsubmission_onlinetext\event\submission_updated',
+        'callback' => '\filter_teamsubmit\observer::update_team_memebers_submision_status_updated',
+        'schedule' => 'instant',
+    ),
+    array(
+        //'eventname' => '\mod_assign\event\submission_updated',
+        'eventname' => '\assignsubmission_file\event\submission_updated',
+        'callback' => '\filter_teamsubmit\observer::update_team_memebers_submision_status_updated',
+        'schedule' => 'instant',
+    ),
+    array(
+        'eventname' => '\mod_assign\event\submission_created',
+        'callback' => '\filter_teamsubmit\observer::update_team_memebers_submision_status_created',
+        'schedule' => 'instant',
     ),
 );
